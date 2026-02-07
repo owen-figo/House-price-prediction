@@ -3,24 +3,6 @@
 This is a Flask-based machine learning web application for predicting house prices in Indonesia.
 It supports both regression (numeric price prediction) and classification (categorical price range: Murah, Sedang, Mahal).
 
-📖 Table of Contents
-
-✨ Features
-
-🛠️ Tech Stack
-
-🚀 Installation & Usage
-
-📂 API Endpoints
-
-📊 Example Workflow
-
-📌 Dataset Requirements
-
-📜 License
-
-✨ Features
-
 📂 Upload dataset (.csv) for model training
 
 🔄 Cleans messy price/area values (e.g., 750jt, 1,2M, Rp 900.000.000)
@@ -41,8 +23,6 @@ Random Forest Classifier → Predicts price category
 
 🔮 REST API endpoints for training & prediction
 
-🛠️ Tech Stack
-
 Backend: Flask (Python)
 
 ML Models: scikit-learn (RandomForest), XGBoost (optional)
@@ -53,32 +33,6 @@ Preprocessing: LabelEncoder, SMOTE (imbalanced-learn)
 
 Frontend: HTML templates (extendable)
 
-🚀 Installation & Usage
-1. Clone the Repository
-git clone https://github.com/YOUR_USERNAME/house-price-predictor.git
-cd house-price-predictor
-
-2. Install Dependencies
-pip install -r requirements.txt
-
-3. Run the Flask App
-python app.py
-
-4. Open in Browser
-http://127.0.0.1:5000
-
-📂 API Endpoints
-🔹 POST /upload
-
-Upload a dataset to train the models.
-
-Input: CSV file (csv-file)
-
-Output: JSON confirmation with available locations
-
-🔹 POST /predict
-
-Make a price prediction.
 
 Input (JSON):
 
