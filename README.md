@@ -1,79 +1,85 @@
-🏡 House Price Prediction Web App
+House Price Prediction System
+Command Line Machine Learning Application
+This project is a command line based machine learning system for predicting house prices in Indonesia. Run it directly from the terminal. It supports numeric price prediction and price category classification.
 
-This is a Flask-based machine learning web application for predicting house prices in Indonesia.
-It supports both regression (numeric price prediction) and classification (categorical price range: Murah, Sedang, Mahal).
+System purpose.
+You use this system to estimate house prices or classify them into price ranges using historical housing data. It is designed for model experimentation and learning, not web deployment.
 
-📂 Upload dataset (.csv) for model training
+Main features.
 
-🔄 Cleans messy price/area values (e.g., 750jt, 1,2M, Rp 900.000.000)
+• Predicts house prices using regression
+• Classifies houses into Murah, Sedang, Mahal
+• Supports Random Forest and XGBoost models
+• Handles imbalanced data using SMOTE
+• Cleans noisy price and area formats
+• Uses location encoding for categorical data
+• Runs fully in the command line
 
-⚖️ Removes outliers (max cap: Rp 100B)
+Machine learning tasks.
 
-🏷️ Classifies houses into Murah, Sedang, Mahal
+Regression mode.
+Predicts a numeric house price in Rupiah.
 
-🤖 ML Models:
+Classification mode.
+Predicts a price category. Murah, Sedang, or Mahal.
 
-Random Forest Regressor → Predicts numeric prices
+Models used.
 
-Random Forest Classifier → Predicts price category
+• Random Forest Regressor
+• XGBoost Regressor
+• Random Forest Classifier
+• XGBoost Classifier
 
-⚖️ Imbalanced dataset handling with SMOTE
+Data preprocessing.
 
-🌍 Encodes categorical features (location, category) with LabelEncoder
+• Converts price strings such as 750jt or 1.2M into numbers
+• Converts area values like 120 m² into floats
+• Cleans price per square meter values
+• Encodes location names using LabelEncoder
+• Drops rows with missing required values
+• Balances class labels using SMOTE
 
-🔮 REST API endpoints for training & prediction
+Dataset requirements.
 
-Backend: Flask (Python)
+Your CSV file must include these columns.
 
-ML Models: scikit-learn (RandomForest), XGBoost (optional)
+• price
+• listing-floorarea
+• listing-floorarea 2
+• listing-location
+• bed
+• bath
 
-Data Handling: pandas, NumPy
+Example values.
 
-Preprocessing: LabelEncoder, SMOTE (imbalanced-learn)
+price: 750jt, 1.2M, 2500000000
+listing-floorarea: 120 m²
+listing-location: Tangerang Selatan
+bed: 3
+bath: 2
 
-Frontend: HTML templates (extendable)
+How the system works.
+Load the dataset from a CSV file
+Clean and preprocess all features
+Encode categorical values
+Split data into training and testing sets
+Train regression and classification models
+Ask the user for input via terminal
+Generate a prediction based on selected mode and model
 
+User input flow.
+You will be prompted to enter.
 
-Input (JSON):
+• Prediction mode. regresi or klasifikasi
+• Number of bedrooms
+• Number of bathrooms
+• Land area in square meters
+• Building area in square meters
+• Location selection from a numbered list
+• Model choice. rf or xgb
 
-{
-  "filename": "your_dataset.csv",
-  "model": "rf",
-  "mode": "regresi",
-  "bed": 3,
-  "bath": 2,
-  "bangunan": 120,
-  "location": "Jakarta Barat"
-}
-
-
-Output (JSON):
-
-{
-  "success": true,
-  "prediction": "Perkiraan Harga: Rp 1,200,000,000"
-}
-
-📊 Example Workflow
-
-Upload houses.csv → App trains RandomForest models
-
-API returns available locations (Jakarta Barat, Bandung, Surabaya, etc.)
-
-Send prediction request with house details
-
-Get predicted price or category
-
-📌 Dataset Requirements
-
-Your dataset must include at least these columns:
-
-price (e.g., "750jt", "1.2M", "Rp 2,500,000,000")
-
-listing-floorarea (e.g., "120 m²")
-
-listing-location (e.g., "Jakarta Barat")
-
-bed (integer, e.g., 3)
-
-bath (integer, e.g., 2)
+Output:
+Regression output.
+Perkiraan harga rumah dalam Rupiah.
+Classification output.
+Kategori harga. Murah, Sedang, atau Mahal.
